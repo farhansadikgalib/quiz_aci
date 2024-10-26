@@ -9,6 +9,7 @@ class HomeView extends GetView<HomeController> {
   const HomeView({super.key});
   @override
   Widget build(BuildContext context) {
+    controller.onInit();
     return Scaffold(
       appBar: AppBar(
         title: const Text('HomeView'),
@@ -18,10 +19,7 @@ class HomeView extends GetView<HomeController> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              'HomeView is working',
-              style: TextStyle(fontSize: 20),
-            ),
+
             
             ElevatedButton(onPressed: (){
 

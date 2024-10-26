@@ -12,7 +12,7 @@ class LoginResponse {
   int? success;
   List<Datum>? data;
   String? message;
-  String? examid;
+  dynamic examid;
   int? duration;
   String? examStartTime;
   String? currTime;
@@ -69,7 +69,7 @@ class LoginResponse {
 }
 
 class Datum {
-  String? examId;
+  dynamic examId;
   String? sbuId;
   String? quizSegmentsId;
   String? portfolio;
