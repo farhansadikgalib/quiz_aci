@@ -1,5 +1,3 @@
-// import 'package:firebase_core/firebase_core.dart';
-// import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -14,29 +12,9 @@ import 'app/core/constants/app_constants.dart';
 import 'app/core/style/app_colors.dart';
 import 'app/routes/app_pages.dart';
 
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-/*  await Firebase.initializeApp();
-  Future.delayed(const Duration(milliseconds: 100), () async {
-    FirebaseInitialize();
-    await FirebaseMessaging.instance.subscribeToTopic('AGPAY');
-  });
 
-  FirebaseMessaging.onBackgroundMessage(_messageHandler);
-
-  RemoteConfigService().initializeConfig();
-
-  FlutterError.onError = (errorDetails) {
-    FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
-  };
-  // if (!kDebugMode) {
-  PlatformDispatcher.instance.onError = (error, stack) {
-    FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
-    return true;
-  };
-  // }
-*/
   await ScreenUtil.ensureScreenSize();
   runApp(ScreenUtilInit(
       designSize: const Size(360, 800),
@@ -52,7 +30,7 @@ Future<void> main() async {
 
         SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
             statusBarColor: Colors.transparent,
-            statusBarIconBrightness: Brightness.dark));
+            statusBarIconBrightness: Brightness.light));
 
         return SharedValue.wrapApp(
           GetMaterialApp(
@@ -64,12 +42,11 @@ Future<void> main() async {
             theme: ThemeData(
               useMaterial3: false,
               canvasColor: AppColors.white,
-              primaryColor: AppColors.primaryColor,
+              primaryColor: Colors.white,
               textTheme: GoogleFonts.poppinsTextTheme(
                 Theme.of(context).textTheme,
               ),
             ),
-
             defaultTransition: transition,
             getPages: AppPages.routes,
             enableLog: kDebugMode,

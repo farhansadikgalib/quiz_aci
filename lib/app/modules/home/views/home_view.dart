@@ -36,19 +36,27 @@ class HomeView extends GetView<HomeController> {
                 'Level Up Your Knowledge!',
                 style: TextStyle(
                   fontSize: 18,
+                  fontWeight: FontWeight.bold,
                   color: Colors.white,
                 ),
               ),
               const SizedBox(height: 100),
-              OutlinedButton(
-                  onPressed: () {
-                    Get.toNamed(Routes.QUIZ);
-                  },
-                  style: OutlinedButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    side: BorderSide(color: Colors.white),
-                  ),
-                  child: const Text('Start Quiz'))
+              SizedBox(
+                width: Get.width / 1.25,
+                height: 50,
+                child: OutlinedButton(
+                    onPressed: () {
+                      Get.toNamed(Routes.QUIZ);
+                    },
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(6.0),
+                      ),
+                      side: const BorderSide(color: Colors.white, width: 2),
+                    ),
+                    child: const Text('Start Quiz')),
+              )
             ],
           ),
         ),
