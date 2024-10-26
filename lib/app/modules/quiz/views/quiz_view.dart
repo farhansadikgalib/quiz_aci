@@ -1,3 +1,4 @@
+import 'package:animated_list_item/animated_list_item.dart';
 import 'package:countdown_progress_indicator/countdown_progress_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -77,9 +78,12 @@ class QuizView extends GetView<QuizController> {
                   children: List.generate(
                       loginController.quizResponse.first.data!.first
                           .questionOption!.length, (index) {
-                    return AnimatedContainer(
-                      duration: const Duration(seconds: 3),
-                      curve: Curves.easeInOut,
+                    return AnimatedListItem(
+                      index: index,
+                      animationType: AnimationType.flipX,
+                      length: loginController.quizResponse.first.data!.first
+                          .questionOption!.length,
+                      aniController: controller.animationController,
                       child: Card(
                         color: Colors.white.withOpacity(0.1),
                         shape: RoundedRectangleBorder(
@@ -112,9 +116,9 @@ class QuizView extends GetView<QuizController> {
                   }),
                 );
               }),
-              const SizedBox(height: 20),
+              AppWidgets().gapH(40),
               SizedBox(
-                width: Get.width / 1.25,
+                width: Get.width,
                 height: 50,
                 child: OutlinedButton(
                   onPressed: () {
