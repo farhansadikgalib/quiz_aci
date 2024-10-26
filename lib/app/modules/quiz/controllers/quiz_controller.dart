@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import '../../login/controllers/login_controller.dart';
 
 class QuizController extends GetxController {
-  var selectedAnswer = -1.obs;
+  var selectedAnswer = 0.obs;
   var questionTitle = ''.obs;
   var answers = <String>[].obs;
   var startTime = DateTime.now().obs;

@@ -1,7 +1,6 @@
 import 'package:countdown_progress_indicator/countdown_progress_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quiz/app/core/style/app_colors.dart';
 import 'package:quiz/app/core/utils/helper/app_widgets.dart';
 import 'package:quiz/app/modules/login/controllers/login_controller.dart';
 import 'package:quiz/app/routes/app_pages.dart';
@@ -34,21 +33,20 @@ class QuizView extends GetView<QuizController> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(
-                    height: 100,
-                    width: 100,
+                    height: 75,
+                    width: 75,
                     child: CountDownProgressIndicator(
                       valueColor: Colors.red,
                       backgroundColor: Colors.white,
                       initialPosition: 0,
                       strokeWidth: 2,
                       labelTextStyle: const TextStyle(
-                          fontSize: 14,
+                          fontSize: 10,
                           color: Colors.white,
                           fontWeight: FontWeight.bold),
                       timeTextStyle: const TextStyle(
-                        fontSize: 16,
+                        fontSize: 12,
                         color: Colors.white,
-                        fontWeight: FontWeight.bold,
                       ),
                       duration: int.parse(loginController
                           .quizResponse.first.duration
@@ -67,7 +65,7 @@ class QuizView extends GetView<QuizController> {
                     loginController.quizResponse.first.data!.first.title
                         .toString(),
                     style: const TextStyle(
-                        fontSize: 22,
+                        fontSize: 20,
                         color: Colors.white,
                         fontWeight: FontWeight.bold),
                   ),
@@ -79,25 +77,36 @@ class QuizView extends GetView<QuizController> {
                   children: List.generate(
                       loginController.quizResponse.first.data!.first
                           .questionOption!.length, (index) {
-                    return Card(
-                      color: Colors.white.withOpacity(0.1),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: RadioListTile<int>(
-                        title: Text(
-                          loginController.quizResponse.first.data!.first
-                              .questionOption![index].quesOption
-                              .toString(),
-                          style: const TextStyle(color: Colors.white),
+                    return AnimatedContainer(
+                      duration: const Duration(seconds: 3),
+                      curve: Curves.easeInOut,
+                      child: Card(
+                        color: Colors.white.withOpacity(0.1),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
                         ),
-                        value: index,
-                        activeColor: AppColors.primaryColor,
-                        fillColor: MaterialStateProperty.all(Colors.white),
-                        groupValue: controller.selectedAnswer.value,
-                        onChanged: (value) {
-                          controller.selectedAnswer.value = value!;
-                        },
+                        child: RadioListTile<int>(
+                          title: Text(
+                            loginController.quizResponse.first.data!.first
+                                .questionOption![index].quesOption
+                                .toString(),
+                            style: const TextStyle(color: Colors.white),
+                          ),
+                          value: index,
+                          activeColor: Theme.of(context).primaryColor,
+                          fillColor: MaterialStateProperty.resolveWith<Color>(
+                            (Set<MaterialState> states) {
+                              if (states.contains(MaterialState.selected)) {
+                                return Theme.of(context).primaryColor;
+                              }
+                              return Colors.white;
+                            },
+                          ),
+                          groupValue: controller.selectedAnswer.value,
+                          onChanged: (value) {
+                            controller.selectedAnswer.value = value!;
+                          },
+                        ),
                       ),
                     );
                   }),
