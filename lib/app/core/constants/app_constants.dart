@@ -4,7 +4,7 @@ import 'package:logger/logger.dart';
 var logger = Logger();
 
 const Transition transition = Transition.cupertino;
-const transitionDuration = 300; // in millisecond
+const transitionDuration = 600; // in millisecond
 const otpResendDuration = 60; //in second
 const buttonCornerRadius = 20.0;
 const layoutLRPadding = 24.0;
