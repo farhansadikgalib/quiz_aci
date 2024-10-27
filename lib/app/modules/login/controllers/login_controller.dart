@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quiz/app/core/utils/helper/app_widgets.dart';
-import 'package:quiz/app/core/utils/helper/print_log.dart';
 import 'package:quiz/app/data/model/login/login_response.dart';
 import 'package:quiz/app/data/repository/login/login_repository.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
@@ -60,7 +59,6 @@ class LoginController extends GetxController {
 
   void login() async {
     var response = await LoginRepository().getLogin(phoneController.value.text);
-    printLog(response);
     if (response.success == 1) {
       quizResponse.add(response);
       Get.toNamed(Routes.HOME,arguments: true);

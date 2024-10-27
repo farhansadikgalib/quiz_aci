@@ -6,7 +6,6 @@ import 'package:quiz/app/core/utils/helper/app_widgets.dart';
 import 'package:quiz/app/core/utils/helper/print_log.dart';
 import 'package:quiz/app/modules/home/controllers/home_controller.dart';
 import 'package:quiz/app/modules/login/controllers/login_controller.dart';
-import 'package:quiz/app/routes/app_pages.dart';
 
 import '../controllers/quiz_controller.dart';
 
@@ -142,6 +141,10 @@ class QuizView extends GetView<QuizController> {
                   height: 50,
                   child: OutlinedButton(
                     onPressed: () {
+                      printLog(loginController
+                          .quizResponse.first.data!.first.rightAnswer
+                          .toString());
+                      printLog(controller.answer.value.toString());
                       Get.back();
                       controller.box.write('submittedAns', true);
                       Get.find<HomeController>().startQuiz.value = false;
