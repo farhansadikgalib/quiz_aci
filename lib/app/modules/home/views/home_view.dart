@@ -28,8 +28,7 @@ class HomeView extends GetView<HomeController> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               AnyImageView(
-                imagePath: 'assets/quiz-logo.png',
-                width: 300,
+                imagePath: 'assets/home.json',
               ),
               const SizedBox(height: 80),
               const Text(
