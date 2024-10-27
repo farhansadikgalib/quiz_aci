@@ -3,6 +3,6 @@ class Assets {
   Assets._();
 
   static const String assetsHome = 'assets/home.json';
-  static const String assetsLogo = 'assets/logo.png';
-  static const String assetsQuizLogo = 'assets/quiz-logo.png';
+  static const String assetsLogo = 'assets/logox.png';
+  static const String assetsQuizLogo = 'assets/quiz-logox.png';
 }

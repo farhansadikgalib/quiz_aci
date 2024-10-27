@@ -1,14 +1,35 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 
 
 class AppHelper {
   showLoader() {
-    return EasyLoading.show(
-      maskType: EasyLoadingMaskType.black,
-      dismissOnTap: true,
-    );
+    EasyLoading.instance
+      ..indicatorWidget = Container(
+        height: 175,
+        width: 175,
+        color: Colors.transparent,
+        padding: EdgeInsets.zero,
+        margin: EdgeInsets.zero,
+        child: Lottie.asset('assets/loader.json',
+            height: 125, width: 125, fit: BoxFit.fill),
+      )
+      ..loadingStyle = EasyLoadingStyle.custom
+      ..textColor = Colors.white
+      ..indicatorColor = Colors.transparent
+      ..maskColor = Colors.transparent
+      ..backgroundColor = Colors.transparent
+      ..boxShadow = []
+      ..contentPadding = EdgeInsets.zero
+      ..radius = 0
+      ..indicatorSize = 60.0
+      ..userInteractions = false
+      ..dismissOnTap = true;
+
+    return EasyLoading.show();
   }
 
   hideLoader() {

@@ -11,9 +11,11 @@ import 'app/core/binding/initial_binding.dart';
 import 'app/core/constants/app_constants.dart';
 import 'app/core/style/app_colors.dart';
 import 'app/routes/app_pages.dart';
+import 'package:get_storage/get_storage.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await GetStorage.init();
 
   await ScreenUtil.ensureScreenSize();
   runApp(ScreenUtilInit(
