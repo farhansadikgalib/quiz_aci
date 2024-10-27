@@ -27,7 +27,7 @@ class AppHelper {
       ..radius = 0
       ..indicatorSize = 60.0
       ..userInteractions = false
-      ..dismissOnTap = true;
+      ..dismissOnTap = false;
 
     return EasyLoading.show();
   }

@@ -72,7 +72,7 @@ abstract class BaseView<Controller extends BaseController>
         width: double.infinity,
         height: 30,
         padding: REdgeInsets.symmetric(horizontal: 16),
-        color: AppColors.primaryColor,
+        color: AppColors.red,
         child: Center(
           child: Text(
             _connectionController.connectedStatusMessage.value,

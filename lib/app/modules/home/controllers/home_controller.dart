@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:quiz/app/core/base/base_controller.dart';
 import 'package:quiz/app/core/utils/helper/print_log.dart';
 import 'package:quiz/app/modules/login/controllers/login_controller.dart';
 
@@ -9,7 +10,7 @@ import '../../../core/utils/helper/app_widgets.dart';
 import '../../../data/repository/login/login_repository.dart';
 import 'package:get_storage/get_storage.dart';
 
-class HomeController extends GetxController {
+class HomeController extends BaseController {
   var controller = Get.find<LoginController>();
   final startQuiz = false.obs;
    bool firstTime = Get.arguments;
@@ -46,6 +47,8 @@ final submittedAns = false.obs;
       if (startQuiz.value) {
         if(!firstTime){
           nextQuiz();
+        }else{
+          firstTime = false;
         }
       }
     });
@@ -53,7 +56,7 @@ final submittedAns = false.obs;
 
   nextQuiz() async {
     var response =
-        await LoginRepository().getLogin(controller.phoneController.value);
+        await LoginRepository().getLogin(controller.phoneController.value.text);
     printLog(response);
     if (response.success == 1) {
       controller.quizResponse.clear();

@@ -1,16 +1,21 @@
 import 'package:any_image_view/any_image_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:quiz/app/core/base/base_view.dart';
 import 'package:quiz/app/core/utils/helper/app_widgets.dart';
 import 'package:quiz/app/routes/app_pages.dart';
 
 import '../controllers/home_controller.dart';
 
-class HomeView extends GetView<HomeController> {
-  const HomeView({super.key});
+class HomeView extends BaseView<HomeController> {
 
   @override
-  Widget build(BuildContext context) {
+  PreferredSizeWidget? appBar(BuildContext context) {
+    return null;
+  }
+
+  @override
+  Widget body(BuildContext context) {
     controller.onInit();
     return Obx(() {
       return Scaffold(

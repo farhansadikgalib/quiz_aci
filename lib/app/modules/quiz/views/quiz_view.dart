@@ -52,9 +52,7 @@ class QuizView extends GetView<QuizController> {
                           fontSize: 12,
                           color: Colors.white,
                         ),
-                        duration: int.parse(loginController
-                            .quizResponse.first.duration
-                            .toString()),
+                        duration: 40,
                         text: 'SEC',
                         onComplete: () {
                           AppWidgets().getSnackBar(
@@ -116,6 +114,7 @@ class QuizView extends GetView<QuizController> {
                               },
                             ),
                             groupValue: controller.selectedAnswer.value,
+
                             onChanged: (value) {
                               controller.selectedAnswer.value = value!;
                               controller.answer.value = loginController

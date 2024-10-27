@@ -7,7 +7,13 @@ import 'package:get_storage/get_storage.dart';
 class QuizController extends GetxController
     with GetSingleTickerProviderStateMixin {
   var selectedAnswer = 0.obs;
-  var answer = "".obs;
+  var answer = Get.find<LoginController>()
+      .quizResponse
+      .first
+      .data!
+      .first
+      .questionOption!.first
+      .quesValue.obs;
   var answers = <String>[].obs;
   var startTime = DateTime.now().obs;
   var controller = Get.find<LoginController>();
