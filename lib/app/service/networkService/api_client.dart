@@ -129,7 +129,8 @@ class ApiClient {
 
       //todo make compatible with GetX
       // AppHelper().showLoader();
-      /* AppHelper().showLoader();
+      /* AppHelper().
+      showLoader();
     AppHelper().hideKeyboard();*/
       if (isLoaderRequired) {
         AppHelper().showLoader();

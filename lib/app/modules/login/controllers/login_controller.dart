@@ -3,11 +3,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quiz/app/core/utils/helper/app_widgets.dart';
-import 'package:quiz/app/core/utils/helper/print_log.dart';
 import 'package:quiz/app/data/model/login/login_response.dart';
 import 'package:quiz/app/data/repository/login/login_repository.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
-
 
 import '../../../routes/app_pages.dart';
 
@@ -23,16 +21,14 @@ class LoginController extends GetxController {
   var status = 'disconnected'.obs;
   final socketId = ''.obs;
   final response = ''.obs;
+
   @override
   void onInit() {
-
-connectToSocket();
+    connectToSocket();
   }
 
-
-
   void connectToSocket() {
-    socket = IO.io('http://192.168.100.63:9099/', <String, dynamic>{
+    socket = IO.io('http://khep.mis.digital', <String, dynamic>{
       'transports': ['websocket'],
       'autoConnect': true,
     });
@@ -49,15 +45,11 @@ connectToSocket();
         debugPrint('Quiz started');
         debugPrint(jsonEncode(data));
 
-
         Map<String, dynamic> parsedJson = json.decode(jsonEncode(data));
         int quizNumber = int.parse(parsedJson['data']['quiz_number']);
         print('Quiz Number: $quizNumber');
         joinNumber.value.text = quizNumber.toString();
-
       });
-
-
     });
 
     socket.onDisconnect((_) {
@@ -65,17 +57,14 @@ connectToSocket();
     });
   }
 
-
-  void login()async {
-  var response = await LoginRepository().getLogin(phoneController.value.text);
-    printLog(response);
-    if(response.success == 1){
+  void login() async {
+    var response = await LoginRepository().getLogin(phoneController.value.text);
+    if (response.success == 1) {
       quizResponse.add(response);
-      Get.toNamed(Routes.HOME);
-
-    }else{
-      AppWidgets().getSnackBar(message: response.message ?? 'Something went wrong');
+      Get.toNamed(Routes.HOME,arguments: true);
+    } else {
+      AppWidgets()
+          .getSnackBar(message: response.message ?? 'Something went wrong');
     }
-
   }
 }
