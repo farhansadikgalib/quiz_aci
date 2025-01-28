@@ -4,11 +4,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart' as getX;
 import 'package:get/get_connect/http/src/status/http_status.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:quiz/app/core/connection_manager'
     '/connection_manager_controller.dart';
 // import 'package:quiz/app/core/utils/helper/auth_helper.dart';
-import 'package:quiz/app/routes/app_pages.dart';
 
 import '../../core/config/app_config.dart';
 import '../../core/constants/app_constants.dart';
