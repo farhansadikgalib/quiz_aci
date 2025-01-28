@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -30,15 +29,7 @@ class LoginController extends GetxController {
 connectToSocket();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
 
-  @override
-  void onClose() {
-    super.onClose();
-  }
 
   void connectToSocket() {
     socket = IO.io('http://192.168.100.63:9099/', <String, dynamic>{
