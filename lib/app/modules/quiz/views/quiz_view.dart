@@ -11,6 +11,8 @@ import '../controllers/quiz_controller.dart';
 class QuizView extends GetView<QuizController> {
   LoginController loginController = Get.find<LoginController>();
 
+  QuizView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -98,9 +100,9 @@ class QuizView extends GetView<QuizController> {
                           ),
                           value: index,
                           activeColor: Theme.of(context).primaryColor,
-                          fillColor: MaterialStateProperty.resolveWith<Color>(
-                            (Set<MaterialState> states) {
-                              if (states.contains(MaterialState.selected)) {
+                          fillColor: WidgetStateProperty.resolveWith<Color>(
+                            (Set<WidgetState> states) {
+                              if (states.contains(WidgetState.selected)) {
                                 return Theme.of(context).primaryColor;
                               }
                               return Colors.white;
