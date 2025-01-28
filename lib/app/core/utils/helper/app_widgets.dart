@@ -415,7 +415,7 @@ class AppWidgets {
   }
 
   Widget socialIconsViewer(context, {required imagePath}) {
-    return SizedBox(
+    return const SizedBox(
       height: 40,
       width: 40,
       child: CircleAvatar(
@@ -425,7 +425,7 @@ class AppWidgets {
             radius: 29,
             backgroundColor: Colors.white,
             child: Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding: EdgeInsets.all(12.0),
 
             ),
           )),
